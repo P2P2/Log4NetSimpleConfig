@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SimpleConfig
 {
@@ -20,12 +16,7 @@ namespace SimpleConfig
 
         private static void ConfigureLoggingToConsole()
         {
-            var layout = new log4net.Layout.PatternLayout
-            {
-                ConversionPattern = @"%date{HH:mm:ss.fff} %8timestamp %-5level [%thread] |%ndc| %logger{2} %message%newline%exception",
-                Header = new log4net.Util.PatternString(@"%appdomain run by %identity at %date{HH:mm:ss.fff}").Format(),
-                Footer = new string('-', 80)
-            };
+            var layout = new log4net.Layout.PatternLayout(@"%date{HH:mm:ss.fff} %8timestamp %-5level [%thread] |%ndc| %logger{2} %message%newline%exception");
             layout.ActivateOptions();
 
             var appender = new log4net.Appender.ConsoleAppender
